@@ -1,0 +1,13 @@
+@mixin cover($img:false) {
+	background: {
+		@if $img{
+			image: url($img);
+		}
+		repeat: no-repeat;
+		position: center center
+	}
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}

@@ -1,0 +1,94 @@
+:root {
+	font-family: $font-regular;
+	font-weight: normal;
+	font-size: $font-size-base-pc * 1%;
+	line-height: $line-height;
+}
+
+@for $i from 1 through 6 {
+	h#{$i} {
+		font-family: $font-heading;
+		font-weight: $font-heading-bold;
+		line-height: 1.15;
+		margin: 0;
+		&:not(:first-child){
+			margin-top: $margin
+		}
+		a {
+			&:link,
+			&:visited,
+			&:hover,
+			&:active {
+				color: $color-text;
+			}
+			&:hover,
+			&:active {
+				color: $color-link;
+			}
+		}
+
+	}
+}
+h1, .h1 {
+	font-size: 350%;
+	letter-spacing: -0.04em;
+	line-height: 0.75em;
+	word-spacing: -0.1em;
+	span{
+		font-size: 70%;
+		padding-right: 8px;
+		position: relative;
+		bottom: 5px;
+	}
+	@include bp(xs) {
+		font-size: 450%;
+	}
+	@include bp(m) {
+		font-size: 1000%;
+	}
+	@include bp(l) {
+		font-size: 600%;
+	}
+
+}
+h2, .h2 {
+	font-size: 120%;
+	@include bp(xs) {
+		font-size: 150%;
+	}
+	@include bp(m) {
+		font-size: 330%;
+	}
+	@include bp(l) {
+		font-size: 250%;
+	}
+}
+h3, .h3 {
+	font-size: 150%;
+}
+h4, .h4 {
+	font-size: 120%;
+}
+h5, .h5 {
+	font-size: 100%;
+}
+
+
+.large-header{
+	&__title{
+
+	}
+	&__subtitle,
+	h2 {
+		margin-top: 0;
+		margin-bottom: $margin;
+	}
+}
+
+/**
+ * Typographical UTILITIES
+ */
+.text--center {
+	text-align: center;
+}
+

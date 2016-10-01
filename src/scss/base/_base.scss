@@ -1,0 +1,198 @@
+*,
+*:before,
+*:after {
+	// @include box-sizing(inherit);
+	box-sizing: inherit; // No prefix needed: http://shouldiprefix.com/#box-sizing
+	-webkit-font-smoothing: inherit;
+	outline: none;
+}
+
+html {
+	// @include box-sizing(border-box);
+	box-sizing: border-box; // No prefix needed: http://shouldiprefix.com/#box-sizing
+	min-height: 100%;
+	height: 100%;
+	color: $color-text;
+	background-color: $color-canvas;
+	&.night {
+		color: $color-text-night;
+		background-color: $color-canvas-night;
+	}
+}
+
+body {
+	height: 100%;
+	text-rendering: optimizeLegibility;
+	-ms-text-size-adjust: 100%; /* specifies a size adjustment for displaying text content in IE on Windows phones */
+	-webkit-font-smoothing: antialiased; /* antialiasing! */
+	-webkit-text-size-adjust: 100%; /* specifies a size adjustment for displaying text content in Safari on iPhone */
+	-webkit-touch-callout: none; /* disables the default callout shown when you touch and hold a touch target */
+	-webkit-overflow-scrolling: touch; /* controls whether or not touch devices use momentum-based scrolling for the given element */
+	-webkit-text-size-adjust: none;
+}
+
+a {
+	&,
+	&:link,
+	&:visited,
+	&:hover,
+	&:active {
+		text-decoration: none;
+		border-bottom: 2px solid;
+		font-weight: $font-heading-bold;
+		font-family: $font-heading;
+		color: $color-link;
+		transition: background-color, color .2s;
+		&:hover{
+			border-bottom: none;
+		}
+	}
+	&:hover,
+	&:active {
+		color: $color-link-hover;
+	}
+}
+
+/**
+ * Some basic Vertical Rhytm for block elements
+ * - We use margin in 1 directtion (bottom)
+ * - So never margin-top. Always margin-bottom:
+ */
+p,
+dl, ul, ol,
+figure, figcaption,
+blockquote,
+table,
+form {
+	margin-top: 0;
+	margin-bottom: $margin;
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
+p {}
+
+img,
+video { /* you want these elements fluid, probably... */
+	max-width: 100%;
+	height: auto;
+}
+
+figure {
+	margin: 0;
+}
+.svgsprite{
+	width: 0;
+	height: 0;
+	overflow: hidden;
+}
+
+// margins and paddings
+.margin--none{
+	margin: 0;
+}
+
+@each $direction in top right bottom left {
+    .margin--#{$direction} {
+        margin-#{$direction}: $margin;
+        &--large{
+            margin-#{$direction}: ($margin*2);
+        }
+    }
+    .padding--#{$direction} {
+        padding-#{$direction}: $padding;
+        &--large{
+            padding-#{$direction}: ($padding*2);
+        }
+    }
+}
+
+/**
+ * Lists
+ * Only lists in [role="main"] are assumed to be 'content lists'
+ */
+[role="main"] ol,
+[role="main"] ul {
+	list-style: none;
+	line-height: 2;
+	padding-left: 0;
+
+	li {
+		padding-left: 1.5em;
+		&:before {
+			content: "■";
+			color: $color-primary;
+			float: left;
+			margin-left: -1.5em;
+		}
+	}
+}
+
+[role="main"] ol {
+	counter-reset: ol;
+	li {
+		counter-increment: ol;
+		&:before {
+			content: counter(ol);
+		}
+	}
+}
+
+
+/**
+ * Definition Lists
+ */
+dl {
+	clear: both;
+}
+dt {
+	font-weight: bold;
+
+	// Side by side on Mobile+
+	@include bp(m) {
+		width: 25%; // There is a danger here that DT content will wrap
+		float: left;
+	}
+}
+
+dd {
+	margin-left: 0;
+	margin-bottom: .5rem;
+
+	// Side by side on Mobile+
+	@include bp(m) {
+		overflow: hidden; // Creates a new Block Formatting Context
+	}
+}
+
+/**
+ * Blockquotes
+ */
+blockquote {
+	background-color: rgba($color-grey, .1);
+	color: $color-grey;
+	font-size: 1.25rem;
+	font-style: italic;
+	text-align: center;
+	padding: $padding;
+	margin-left: 0;
+	margin-right: 0;
+	clear: both;
+
+	:first-child:before { content: open-quote; }
+	:last-child:after { content: close-quote; }
+
+	@include bp(m) {
+		padding: $padding $padding*2;
+		margin-left: -4rem;
+		margin-right: -4rem;
+	}
+}
+
+@include browserfix(ie) {
+	* {
+		text-shadow: 1px 1px 1px rgba($color-black,.08);
+		font-smooth: always;
+	}
+}

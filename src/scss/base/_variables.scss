@@ -1,0 +1,83 @@
+/**
+ * Sass Settings
+ *
+ * Various settings such as colors, fonts, sizes re-used
+ * throughout the site
+ *
+ * @name:   _variables
+ * @author: Onno <@ovdsteen>
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ */
+
+/**
+ * COLORS
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ */
+
+// Generic Colors
+$color-debug                    : #555;
+$color-black                    : #181818;
+$color-white                    : #fff;
+$color-grey                     : #9ca6a7;
+$color-grey-dark                : #4e4e4e;
+
+// Brand Colors
+$color-primary                  : rgb(0, 185, 173);
+$color-primary-light            : rgb(201, 233, 230);
+$color-primary-dark             : rgb(18, 52, 56);
+
+// Specific colors
+$color-canvas                   : $color-white;
+$color-canvas-night             : $color-black;
+
+$color-text                     : $color-grey-dark;
+$color-text-night               : $color-white;
+
+$color-link                     : $color-text;
+$color-link-hover               : $color-text;
+
+/**
+ * (WEB)FONTS
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ */
+$font-regular                   : 'Lora', serif;
+$font-heading                   : 'Poppins', sans-serif;
+$line-height                    : 1.5;
+
+//$font-heading-light             : 300;
+$font-heading-regular           : 500;
+$font-heading-bold              : 700;
+
+$font-regular-light             : 100;
+$font-regular-regular           : 300;
+$font-regular-bold              : 600;
+
+$font-size-base-pc              : $font-regular-light;
+
+/**
+ * Media Query BREAKPOINTS. Used in /mixins/_breakpoints.scss
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ */
+$breakpoints: (
+    xs: 375px, // iPhone 6 in portrait etc
+    s: 600px, // iPhone 6 in landcape etc
+    m: 768px, // iPad portrait etc
+    l: 1024px, // iPad landscape etc
+    xl: 1280px // bigger screens
+);
+
+/**
+ * SIZES
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ */
+$border-radius                  : 0;
+$padding                        : 2rem;
+$margin                         : 2rem;
+$header-height                  : 80px;
+
+/**
+ * GRID
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ */
+$grid-columns                   : 12;
+$grid-gutter                    : $margin;

@@ -1,0 +1,16 @@
+{
+  "listen": 5000,
+  "socket": 3000,
+  "spotify": {
+    "clientid": "",
+    "secret": ""
+  },
+  "redis": {
+    "name": "",
+    "secret": ""
+  },
+  "slack" : {
+    "token": "",
+    "usertoken": ""
+  }
+}

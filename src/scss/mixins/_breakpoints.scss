@@ -1,0 +1,19 @@
+// !default: so only picked up when they are not defined earlier
+// Preferably set these in _variables.scss
+$breakpoints: (
+	xs: 320px, // iPhone 6 in landcape etc
+	s: 600px, // iPhone 6 in landcape etc
+	m: 768px, // iPad portrait etc
+	l: 1024px, // iPad landscape etc
+	xl: 1280px // bigger screens
+) !default;
+
+@mixin bp($screensize) {
+	@if map-has-key($breakpoints, $screensize) {
+		@media (min-width: map-get($breakpoints, $screensize)) {
+			@content;
+		}
+	} @else {
+		@warn "'#{$screensize}' has not been declared as a breakpoint in _variables.scss or /mixins/_breakpoints.scss";
+	}
+}

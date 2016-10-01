@@ -1,0 +1,46 @@
+// we should thank http://browserhacks.com/ for this great roundup of dirt
+
+@mixin browserfix($browser) {
+	@if ($browser == "ie") { // the allmighty IE, 10 and up. 9 and lower requires usage of conditional comments, just stash your code in assets/styles/ie.scss
+		@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+			@content
+		}
+	}
+	@else if ($browser == "firefox") { // firefox 3 and up
+		@-moz-document url-prefix() {
+			@content;
+		}
+	}
+	@else if ($browser == "opera") { // opera 9.5 and up
+		_:-o-prefocus, body:last-child .selector {
+			@content;
+		}
+	}
+	@else if ($browser == "safari") { // all safari
+		.selector:not(*:root) {
+			@content;
+		}
+	}
+	@else if ($browser == "chrome") { // chrome 28 and up
+		@supports (-webkit-appearance:none) {
+			@content;
+		}
+	}
+}
+
+/*
+	usage:
+
+	.element {
+		@include browserfix(ie) {
+			&:after {
+				content: "This is IE only"
+			}
+		}
+		@include browserfix(firefox) {
+			&:after {
+				content: "Only Firefox users will see this";
+			}
+		}
+	}
+*/

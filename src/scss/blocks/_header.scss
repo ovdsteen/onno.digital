@@ -1,0 +1,15 @@
+.header{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: $header-height;
+    z-index: 300;
+    font-size: 100%;
+    @include display(flex);
+    @include align-items(center);
+    .color & {
+        background: rgba(#fff,0.8);
+    }
+}
+

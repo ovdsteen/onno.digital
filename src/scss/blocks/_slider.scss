@@ -1,0 +1,62 @@
+.about {
+    background: $color-primary;
+    @include transition(transform 0.6s);
+    &--open {
+        @include transform(translateX(0));
+    }
+    // &:before{
+    //     left: 0;
+    //     @include linear-gradient(right,  rgba($cv-bg-color,0) 0%,rgba($cv-bg-color,1) 100%);
+    // }
+    // &:after{
+    //     right: 0;
+    //     @include linear-gradient(left,  rgba($cv-bg-color,0) 0%,rgba($cv-bg-color,1) 100%);
+    // }
+    // &:before,
+    // &:after{
+    //     position: absolute;
+    //     top: 0;
+    //     width: 300px;
+    //     height: 100%;
+    //     content: "";
+    //     z-index: 100;
+    // }
+
+}
+
+$column-width: 33.3333333%;
+
+.slider {
+  margin-top: 170px;
+  width: 100%;
+  overflow: hidden;
+  z-index: 100;
+  @include transform(translateZ(0));
+  @include perspective(1000);
+  @include backface-visibility(hidden);
+  .animating{
+    &--yes{
+      @include transition(transform 0.6s);
+    }
+  }
+  > div{
+    white-space: nowrap;
+    height: 100%;
+  }
+  @include clearfix;
+  .slide{
+    vertical-align: top;
+    display: inline-block;
+    overflow: hidden;
+    white-space: normal;
+    opacity: .2;
+    @include transition(opacity  1s)
+    &--active{
+      opacity: 1;
+    }
+    &__inner {
+      padding: $padding;
+
+    }
+  }
+}

@@ -1,0 +1,22 @@
+.navigation{
+    font-weight: $font-heading-regular;
+    &__list{
+        text-align: right;
+        align-self: flex-start;
+        @include no-bullets;
+    }
+    &__item{
+        display: inline-block;
+        a {
+            font-weight: inherit;
+            color: inherit;
+            border-bottom: none;
+            &:hover{
+                border-bottom: 2px solid;
+            }
+        }
+        &:not(:first-child){
+            margin-left: $margin;
+        }
+    }
+}

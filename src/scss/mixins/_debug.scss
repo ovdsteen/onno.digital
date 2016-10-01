@@ -1,0 +1,25 @@
+@mixin debug() {
+    * {
+        outline: 1px dashed $color-debug;
+    }
+    body {
+        &:after {
+            display: block;
+            position: fixed;
+            left: 50%;
+            bottom: 8px;
+            width: 300px;
+            padding: 4px 8px;
+            text-align: center;
+            color: red;
+            font-size: 10px;
+            content: "s=#{map-get($breakpoints, s)}";
+            @include transform(translateX(-50%));
+            @each $name, $value in $breakpoints {
+                @include bp($name) {
+                    content: "#{$name}=#{$value}";
+                }
+            }
+        }
+    }
+}

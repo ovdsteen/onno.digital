@@ -1,0 +1,36 @@
+//@include debug;
+.container{
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: $grid-gutter;
+    padding-right: $grid-gutter;
+    width: 100%;
+}
+.row {
+    margin-left: - $grid-gutter;
+    margin-right: - $grid-gutter;
+    @include clearfix;
+}
+[class*='column--'] {
+    float: left;
+    padding-left: $grid-gutter;
+    padding-right: $grid-gutter;
+    min-height: 1px;
+}
+@for $i from 1 through $grid-columns {
+    .column {
+        &--#{$i} {
+           width: 100% / $grid-columns * $i;
+        }
+        &--offset-#{$i} {
+            margin-left: 100% / $grid-columns * $i;
+        }
+        &__inner{
+            .color &{
+                background: rgba(#fff,0.91);
+                padding: $padding;
+                border-radius: 4px;
+            }
+        }
+    }
+}

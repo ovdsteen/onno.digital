@@ -1,0 +1,58 @@
+label,
+select,
+option,
+button {
+	cursor: pointer;
+}
+
+fieldset {
+	border: 0;
+	margin: 0;
+	padding: 0;
+	legend {
+
+	}
+}
+
+label {}
+
+#{$all-text-inputs},
+textarea {
+	@include placeholder() {
+		color: $color-grey;
+		font-style: italic;
+	}
+	box-sizing: border-box;
+	background-color: $color-white;
+	color: $color-text;
+	border-radius: 3px;
+	border: 1px solid $color-grey;
+}
+
+#{$all-text-inputs} {
+	// border: 0;
+	line-height: 1;
+	padding: 1em 2em;
+	max-height: 3em;
+	vertical-align: middle;
+}
+
+input {
+	& + button,
+	& + [type="button"],
+	& + [type="submit"],
+	& + [type="reset"],
+	& + .btn {
+		margin-left: .25rem;	
+	}
+
+}
+
+textarea {
+	resize: vertical;
+}
+
+#{$all-button-inputs} {}
+
+#{$all-button-inputs-hover},
+#{$all-button-inputs-focus} {}

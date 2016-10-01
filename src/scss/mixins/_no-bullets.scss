@@ -1,0 +1,8 @@
+@mixin no-bullets {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	li:before {
+		display: none;
+	}
+}

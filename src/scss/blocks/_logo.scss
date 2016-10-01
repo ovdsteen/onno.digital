@@ -1,0 +1,15 @@
+.logo{
+    line-height: 1.5em;
+    a {
+        &:link,
+        &:visited,
+        &:active{
+            font-weight: $font-heading-regular;
+            text-decoration: none;
+            border-bottom: 0;
+        }
+        &:hover{
+            border-bottom: 2px solid;
+        }
+    }
+}
