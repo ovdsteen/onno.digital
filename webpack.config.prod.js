@@ -7,8 +7,6 @@ includePaths.push([require('node-normalize-scss').includePaths])
 
 module.exports = {
   entry: [
-    'webpack/hot/dev-server',
-    'webpack-hot-middleware/client',
     './src'
   ],
   output: {
