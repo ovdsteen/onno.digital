@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router'
-import HomeData from '../../../data/home'
 import CreateMarkup from '../../helpers/createmarkup'
+import HomeData from '~/static/data/home.json'
 
 function Home() {
 

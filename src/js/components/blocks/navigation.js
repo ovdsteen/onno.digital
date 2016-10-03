@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router'
 
-import NavigationData from '../../../data/navigation'
+import NavigationData from '~/static/data/navigation'
 
 function Item(props) {
 

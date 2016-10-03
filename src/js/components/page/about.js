@@ -1,7 +1,8 @@
 import React from 'react';
 import Hammer from'react-hammerjs';
-import AboutData from '../../../data/about'
+import AboutData from '~/static/data/about'
 import CreateMarkup from '../../helpers/createmarkup'
+
 
 class About extends React.Component {
 

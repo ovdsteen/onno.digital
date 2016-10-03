@@ -7,7 +7,7 @@ const app = require('./app');
 app.get('/*', function(req, res, next){
     var ajax = req.xhr;
     if (!ajax){
-        res.sendFile(process.cwd() + '/src/views/index.html');
+        res.sendFile(process.cwd() + '/static/index.html');
     }else{
         next();
     }

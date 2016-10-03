@@ -7,6 +7,6 @@ var config = require('./config');
 app
   .use(require('./middleware/webpack'))
   .use(express.static('public'))
-  .use(express.static('src/views'));
+  .use(express.static('static'));
 
 module.exports = app;

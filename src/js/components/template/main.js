@@ -3,8 +3,6 @@ import { RouteTransition } from 'react-router-transition';
 
 import Header from '../layout/header';
 
-import icon152x152 from  '../../../img/icon-152x152.png'; // temp
-
 class MainTemplate extends React.Component {
 
   render() {
