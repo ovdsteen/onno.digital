@@ -4,31 +4,51 @@
     {
       "title": "Experience",
       "subtitle": "Creative Webdeveloper",
-      "description": "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita sunt eos aperiam nisi reiciendis.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita sunt eos aperiam nisi reiciendis.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita sunt eos aperiam nisi reiciendis.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita sunt eos aperiam nisi reiciendis.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita sunt eos aperiam nisi reiciendis.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita sunt eos aperiam nisi reiciendis.</p>",
+      "description": "Meer dan 10 jaar ervaring in verschillende disciplines",
       "list": [
-
+          {
+            "title":"Head of technical development",
+            "company":"@Strangelove",
+            "timeframe":"01/2012 - Heden"
+          },
+          {
+            "title":"Freelance webdeveloper",
+            "company":"@oneostudio.nl",
+            "timeframe":"01/2004 - Heden"
+          },
+          {
+            "title":"Creative manager / webdeveloper",
+            "company":"@Blackorange",
+            "timeframe":"01/2008 - 2011"
+          },
+          {
+            "title":"Webdesigner/front-end developer",
+            "company":"@Peter Langhout Reizen",
+            "timeframe":"01/2004 - 12/2007"
+          }
       ]
     },
     {
       "title": "Front-end",
-      "subtitle": "Creative Webdeveloper",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita sunt eos aperiam nisi reiciendis.",
+      "subtitle": "Webdeveloper",
+      "description": "Werken met de laatste technieken. Het simpel maken van complexe systemen is waar mijn passie ligt.",
       "list": [
           "CSS/SASS/LESS",
           "HTML5",
           "Javascript/Angular/jQuery",
+          "ReactJS/Socket.io",
           "Gulp/Grunt/Webpack"
       ]
     },
     {
       "title": "Me",
+      "image": "img/me.jpg",
       "subtitle": "Creative Webdeveloper",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita sunt eos aperiam nisi reiciendis.",
+      "description": "Freelance webdeveloper. Voornamelijk op maat gemaakte webapplicaties, maar ook de bekende opensource systemen zoals wordpress en magento. Ik ben geïnteresseerd in de laatste technologieën en heb gewerkt met diverse API’s",
       "list": [
-        "32 year",
-        "Girlfriend/Son",
-        "Programing/Music/Coffee",
-        "Zuid-Holland/Netherlands"
+        "32 jaar",
+        "Programeren/Muziek/Koffie",
+        "Zuid-Holland/Nederland"
       ],
       "link": {
         "url": "mailto:ovdsteen@gmail.com",
@@ -37,23 +57,33 @@
     },
     {
       "title": "Back-end",
-      "subtitle": "Creative Webdeveloper",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero doloribus omnis, vel vero molestiae.",
+      "subtitle": "Webdeveloper",
+      "description": "Mijn interesses liggen bij open source oplossingen gecombineerd met maatwerk",
       "list": [
         "PHP/Laravel/Worpress/Magento",
         "Node/Socket.io",
-        "Nginx/Apache",
-        "RESTful API's",
+        "REST API's",
         "MYSQL, MongoDB"
       ]
     },
     {
-      "title": "UI design",
-      "subtitle": "Creative Webdeveloper",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore, corporis nemo qui quis pariatur culpa.",
+      "title": "UI/UX design",
+      "subtitle": "Webdesign en user expierence",
+      "description": "Werken voor een creatief bureau heeft mij veel geleerd op het gebied van user experience en het analyseren van merken.",
       "list": [
-        "Photoshop/Illustrator/inDesign",
-        "Axure (wireframe)"
+        "Photoshop/Illustrator/inDesign/Sketch",
+        "Axure/Omnigraffle",
+        "After Effects/Premiere"
+      ]
+    },
+    {
+      "title": "Systeem",
+      "subtitle": "",
+      "description": "",
+      "list": [
+        "Nginx/Apache",
+        "GIT/SSH/SSL",
+        "Capistrano"
       ]
     }
   ]

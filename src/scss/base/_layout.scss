@@ -7,7 +7,11 @@
                 padding-top: $header-height;
                 height: 100vh;
                 @include display(flex);
-                @include align-items(center);
+                margin-top: 50px;
+                @include bp(m) {
+                    margin-top: 0;
+                    @include align-items(center);
+                }
             }
         }
     }
@@ -15,7 +19,7 @@
 
 
 .page {
-    //position: fixed;
+    position: fixed;
     width: 100%;
     height: 100%;
     top: 0;
@@ -26,6 +30,15 @@
     }
     &.about {
 
+    }
+    &.homepage{
+        .more {
+            display: inline-block;
+            margin-top: 50px;
+            @include bp(m) {
+                margin-top: 0;
+            }
+        }
     }
 }
 

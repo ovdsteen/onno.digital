@@ -1,4 +1,6 @@
 .navigation{
+    position: absolute;
+    right: $padding;
     font-weight: $font-heading-regular;
     &__list{
         text-align: right;

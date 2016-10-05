@@ -21,7 +21,7 @@ function Home() {
                 </header>
                 <div className="description">
                   <p>{HomeData.description}</p>
-                   <Link to="about" >More</Link>
+                   <Link to="about" className="more" >Meer</Link>
                 </div>
               </div>
           </article>

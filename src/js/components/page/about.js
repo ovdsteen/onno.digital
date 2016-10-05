@@ -65,7 +65,18 @@ class About extends React.Component {
   }
 
   aboutItemList(label,key){
-    return <li key={key} dangerouslySetInnerHTML={CreateMarkup(label)}></li>
+    if (typeof label === 'object'){
+      ////todo
+      let tmp='';
+      for (const key in label ){
+        tmp += '<span class="type type__'+key+'">'+label[key]+'</span>';
+      }
+      return ( <li key={key} dangerouslySetInnerHTML={CreateMarkup(tmp)}></li>)
+      ////todo
+    }else{
+      return <li key={key} dangerouslySetInnerHTML={CreateMarkup(label)}></li>
+    }
+
   }
 
   aboutItemLink(prop){
@@ -75,10 +86,6 @@ class About extends React.Component {
   }
 
   handlePaginationClick(key){
-
-    this.setState({
-      className:'animating--yes'
-    });
 
     this.setActive(key + 1);
 
@@ -102,6 +109,28 @@ class About extends React.Component {
       );
   }
 
+  handleItemClick (event){
+    console.log('ja');
+
+    console.log('srcEvent',event.preventDefault());
+    // let parent = event.target.parentNode
+    // if (parent.nodeName !== 'ARTICLE'){
+    //   console.log('hallo');
+    //     parent = parent.parentNode
+    // }
+    // console.log('parent',parent);
+    //this.setActive(key + 1);
+  }
+
+  imageFigure(image){
+    const style = {
+      backgroundImage: 'url('+image+')'
+    }
+    return (<figure className="slide__figure">
+              <div className="slide__image" style={style}>Image</div>
+            </figure>);
+  }
+
   aboutItem(prop,key){
 
     const style = {
@@ -117,22 +146,29 @@ class About extends React.Component {
       return this.aboutItemList(label,key);
     });
 
+    let image;
+    if (prop.image) {
+      image = this.imageFigure(prop.image);
+    }
+
+
     const classMod = (key+1) === this.state.currentSlide ? ' slide--active' : '';
 
     return (
-      <article key={key} className={`slide${classMod}`} style={style}>
+      <article key={key} className={`slide${classMod}`} style={style} onClick={this.handleItemClick.bind(this,key)}>
         <div className="slide__inner">
-          <header className="large-header">
-              <h1 className="large-header__title h2">{prop.title}</h1>
-              <h2 className="large-header__subtitle h4">{prop.subtitle}</h2>
+          <header className="slide__header">
+              <h1 className="slide__title h2">{prop.title}</h1>
+              <h2 className="slide__subtitle h4">{prop.subtitle}</h2>
           </header>
-          <div className="description">
-              <div dangerouslySetInnerHTML={CreateMarkup(prop.description)} />
-              <ul>
-                {list}
-              </ul>
-              {this.aboutItemLink(prop)}
+          { image }
+          <div className="slide__description">
+            <div dangerouslySetInnerHTML={CreateMarkup(prop.description)} />
           </div>
+          <ul className="slide__items">
+            {list}
+          </ul>
+          {this.aboutItemLink(prop)}
         </div>
       </article>
     )
@@ -158,7 +194,8 @@ class About extends React.Component {
   }
 
 
-  releasePan(event){
+  releasePan(event,e){
+
 
     // set css animation
     this.setState({className:'animating--yes'});
@@ -211,6 +248,7 @@ class About extends React.Component {
     let positionX = -Math.abs((slideNr-1)*columnWidth);
 
     this.setState({
+      className:'animating--yes',
       currentSlide:slideNr, // set slidenummer
       positionX: positionX,
       style:{
@@ -229,14 +267,13 @@ class About extends React.Component {
 
     return (
       <section className="page about">
-        <Hammer direction={Hammer.DIRECTION_HORIZONTAL} onPan={this.handlePan.bind(this)} onPanEnd={this.releasePan.bind(this)}>
+        <Hammer direction={Hammer.DIRECTION_HORIZONTAL} onTap={this.handleItemClick.bind(this)} onPan={this.handlePan.bind(this)} onPanEnd={this.releasePan.bind(this)}>
           <section className="slider">
             <div className={`slider__slides ${this.state.className}`} style={this.state.style}>
               {AboutItems}
             </div>
             {this.aboutPagination(AboutData.items)}
           </section>
-
         </Hammer>
       </section>
     );
