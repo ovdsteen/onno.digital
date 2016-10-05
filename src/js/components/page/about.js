@@ -62,17 +62,17 @@ class About extends React.Component {
     window.removeEventListener('resize', this.handleResize);
   }
 
-  CvItemList(label,key){
+  AboutItemList(label,key){
     return <li key={key} dangerouslySetInnerHTML={CreateMarkup(label)}></li>
   }
 
-  CvItemLink(prop){
+  AboutItemLink(prop){
     if (prop.link){
       return <a href={prop.link.url}>{prop.link.label}</a>;
     }
   }
 
-  CvItem(prop,key){
+  AboutItem(prop,key){
 
     const style = {
       width: this.state.widthSlide+'%'
@@ -84,13 +84,17 @@ class About extends React.Component {
     }
 
     let list = prop.list.map((label,key) => {
-      return this.CvItemList(label,key);
+      return this.AboutItemList(label,key);
     });
 
-    let CvItemLink = (<div>loading</div>)
+    console.log('XXXX',key, this.state.currentSlide);
+
+    const classMod = key === this.state.currentSlide ? ' active' : 'niet';
+
+    let AboutItemLink = (<div>loading</div>)
 
     return (
-      <article key={key} className="slide" style={style}>
+      <article key={key} className={`slide${classMod}`} style={style}>
         <div className="slide__inner">
           <header className="large-header">
               <h1 className="large-header__title h2">{prop.title}</h1>
@@ -101,7 +105,7 @@ class About extends React.Component {
               <ul>
                 {list}
               </ul>
-              {this.CvItemLink(prop)}
+              {this.AboutItemLink(prop)}
           </div>
         </div>
       </article>
@@ -204,8 +208,8 @@ class About extends React.Component {
 
   render() {
 
-    let CVitems = AboutData.items.map((item,key) => {
-      return this.CvItem(item,key);
+    let AboutItems = AboutData.items.map((item,key) => {
+      return this.AboutItem(item,key);
     });
 
 
@@ -214,7 +218,7 @@ class About extends React.Component {
         <Hammer direction={Hammer.DIRECTION_HORIZONTAL} onPan={this.handlePan.bind(this)} onPanEnd={this.releasePan.bind(this)}>
           <section className="slider">
             <div className={this.state.className} style={this.state.style}>
-              {CVitems}
+              {AboutItems}
             </div>
           </section>
         </Hammer>
