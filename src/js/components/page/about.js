@@ -12,8 +12,8 @@ class About extends React.Component {
 
     this.state = {
       positionX: 0,
-      windowWidth: window.innerWidth, // todo: media query
-      widthSlide: 100, // only odd columns allowed // todo: dynanmisch ophalen + media query
+      windowWidth: window.innerWidth,
+      widthSlide: 100, // only odd columns allowed
       className: 'animating--no',
       currentSlide: 3,
       totalSlide: AboutData.items.length,
@@ -32,21 +32,23 @@ class About extends React.Component {
     const windowInnerWidth = window.innerWidth;
 
     this.setState({
-      widthSlide: this.calcColumn(windowInnerWidth,this.state.breakpoints)
+      widthSlide: this.calcColumn(windowInnerWidth)
     });
 
     this.setState({
       windowWidth: windowInnerWidth
     });
 
+    this.setActive(this.state.currentSlide)
+
   }
 
-  calcColumn(w,b){
+  calcColumn(){
     let columnNr = 100;
-    if ( w > b['l'] ){
+    if ( this.state.windowWidth > this.state.breakpoints['l'] ){
       columnNr = 20;
-    }else  if ( w <  b['l'] + 1 &&
-                w >  b['s'] + 1 ){
+    } else  if ( this.state.windowWidth <  this.state.breakpoints['l'] + 1 &&
+                this.state.windowWidth >  this.state.breakpoints['s'] + 1 ){
       columnNr = 33.33333;
     }
     return columnNr;
@@ -62,17 +64,45 @@ class About extends React.Component {
     window.removeEventListener('resize', this.handleResize);
   }
 
-  AboutItemList(label,key){
+  aboutItemList(label,key){
     return <li key={key} dangerouslySetInnerHTML={CreateMarkup(label)}></li>
   }
 
-  AboutItemLink(prop){
+  aboutItemLink(prop){
     if (prop.link){
       return <a href={prop.link.url}>{prop.link.label}</a>;
     }
   }
 
-  AboutItem(prop,key){
+  handlePaginationClick(key){
+
+    this.setState({
+      className:'animating--yes'
+    });
+
+    this.setActive(key + 1);
+
+  }
+
+  aboutPaginationItem(item,key){
+
+    const classMod = (key+1) === this.state.currentSlide ? ' slider__pagination__item--active' : '';
+
+    return <li key={key} onClick={this.handlePaginationClick.bind(this,key)} className={`slider__pagination__item ${classMod}`} ></li>;
+  }
+
+  aboutPagination(items){
+    let list = items.map( (item,key) => {
+      return this.aboutPaginationItem(item,key);
+    })
+    return (
+        <ul className="slider__pagination">
+          {list}
+        </ul>
+      );
+  }
+
+  aboutItem(prop,key){
 
     const style = {
       width: this.state.widthSlide+'%'
@@ -84,14 +114,10 @@ class About extends React.Component {
     }
 
     let list = prop.list.map((label,key) => {
-      return this.AboutItemList(label,key);
+      return this.aboutItemList(label,key);
     });
 
-    console.log('XXXX',key, this.state.currentSlide);
-
-    const classMod = key === this.state.currentSlide ? ' active' : 'niet';
-
-    let AboutItemLink = (<div>loading</div>)
+    const classMod = (key+1) === this.state.currentSlide ? ' slide--active' : '';
 
     return (
       <article key={key} className={`slide${classMod}`} style={style}>
@@ -101,11 +127,11 @@ class About extends React.Component {
               <h2 className="large-header__subtitle h4">{prop.subtitle}</h2>
           </header>
           <div className="description">
-              <p>{prop.description}</p>
+              <div dangerouslySetInnerHTML={CreateMarkup(prop.description)} />
               <ul>
                 {list}
               </ul>
-              {this.AboutItemLink(prop)}
+              {this.aboutItemLink(prop)}
           </div>
         </div>
       </article>
@@ -159,57 +185,45 @@ class About extends React.Component {
     // remove min/plus and add one
     let currentSlide = Math.abs(direction) + 1;
 
-    // set slidenummer
-    this.setState({currentSlide:currentSlide});
-
-
-
-    // calculate median
-    // let median = (Math.round(100/this.state.widthSlide)+1)/2;
+    // // set slidenummer
+    // this.setState({
+    //   currentSlide:currentSlide
+    // });
 
     // calculate slideposition
-    let slidePosition = direction * this.state.widthSlide;
+    // let slidePosition = direction * this.state.widthSlide;
 
-    this.setState({style:{
-      transform: 'translate3d('+slidePosition+'%,0,0)'
-    }});
+    // this.setState({style:{
+    //   transform: 'translate3d('+slidePosition+'%,0,0)'
+    // }});
 
-    this.setState({
-      positionX: slidePosition
-    });
+    // this.setState({
+    //   positionX: slidePosition
+    // });
 
-    this.setActive(this.state.currentSlide);
+    this.setActive(currentSlide);
 
   }
 
   setActive(slideNr){
 
-    /////////////// TODO: Bah
+    var columnWidth = this.calcColumn(this.state.windowWidth)
+    let positionX = -Math.abs((slideNr-1)*columnWidth);
 
-    const x = document.getElementsByClassName('slide');
-    for (var i = 0; i < x.length; i++) x[i].classList.remove('slide--active');
-    x[slideNr-1].classList.add('slide--active')
-
-    var columnWidth = this.calcColumn(this.state.windowWidth,this.state.breakpoints)
-
-    this.state.positionX = -Math.abs((this.state.currentSlide-1)*columnWidth);
-
-
-    // this.setState({
-    //   positionX: slidePosition
-    // });
-    this.setState({style:{
-      transform: 'translate3d('+this.state.positionX+'%,0,0)'
-    }});
-
-    ///////////////
+    this.setState({
+      currentSlide:slideNr, // set slidenummer
+      positionX: positionX,
+      style:{
+        transform: 'translate3d('+positionX+'%,0,0)'
+      }
+    });
 
   }
 
   render() {
 
     let AboutItems = AboutData.items.map((item,key) => {
-      return this.AboutItem(item,key);
+      return this.aboutItem(item,key);
     });
 
 
@@ -217,10 +231,12 @@ class About extends React.Component {
       <section className="page about">
         <Hammer direction={Hammer.DIRECTION_HORIZONTAL} onPan={this.handlePan.bind(this)} onPanEnd={this.releasePan.bind(this)}>
           <section className="slider">
-            <div className={this.state.className} style={this.state.style}>
+            <div className={`slider__slides ${this.state.className}`} style={this.state.style}>
               {AboutItems}
             </div>
+            {this.aboutPagination(AboutData.items)}
           </section>
+
         </Hammer>
       </section>
     );

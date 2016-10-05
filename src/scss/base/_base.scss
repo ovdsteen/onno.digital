@@ -29,6 +29,8 @@ body {
 	-webkit-touch-callout: none; /* disables the default callout shown when you touch and hold a touch target */
 	-webkit-overflow-scrolling: touch; /* controls whether or not touch devices use momentum-based scrolling for the given element */
 	-webkit-text-size-adjust: none;
+	padding: 0;
+	margin: 0;
 }
 
 a {
