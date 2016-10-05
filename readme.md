@@ -31,11 +31,15 @@ $ node server
 
 
 ###Server
-The website is hosted on a `nginx` server.
+The site runs on `node` and is hosted on a `nginx` vps.
 ```
 NODE_ENV=production node server.js
 ```
 or with forever
 ```bash
-$ NODE_ENV=production forever start -e /var/www/onno.digital/log/err.log -a onno.digital/app.js
+$ NODE_ENV=production forever start -e /var/www/onno.digital/log/err.log -a --uid onno.digital server.js
 ```
+
+###Todo
+* deploy using `capistrano`
+* add realtime socket `slack` connection
