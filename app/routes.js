@@ -7,11 +7,8 @@ const app = require('./app');
 app.get('/*', function(req, res, next){
     var ajax = req.xhr;
     if (!ajax){
-        res.sendFile(process.cwd() + '/static/index.html');
+        res.render('index', { });
     }else{
         next();
     }
 });
-
-
-

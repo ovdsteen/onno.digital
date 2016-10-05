@@ -20,14 +20,6 @@ export default function Navigation() {
         return (<Item item={item} key={key} />);
     });
 
-    // if (props.items) {
-
-    //     Items = props.items.map((item,key) => {
-    //         return (<Item item={item} key={key} />);
-    //     });
-
-    // }
-
     return (
         <nav className="navigation">
             <ul className="navigation__list">

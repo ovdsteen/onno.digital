@@ -1,8 +1,12 @@
 'use strict';
 
-var express = require('express');
-var app = express();
-var config = require('./config');
+const express = require('express');
+const app = express();
+
+app.set('view engine', 'ejs');
+app.set('views', './app/views');
+
+app.locals.env = process.env['NODE_ENV'];
 
 app.use(express.static('public'));
 app.use(express.static('static'));
