@@ -3,6 +3,7 @@
   width: 100%;
   overflow: hidden;
   z-index: 100;
+  font-size: 100%;
   @include bp(m) {
       margin-top: 150px;
   }
@@ -19,6 +20,7 @@
     height: 100%;
   }
   &__pagination{
+
     text-align: center;
     bottom: 0;
     position: fixed;
@@ -44,7 +46,6 @@
   .slide{
     vertical-align: top;
     display: inline-block;
-    overflow: hidden;
     white-space: normal;
     opacity: .2;
     @include transition(opacity  1s)

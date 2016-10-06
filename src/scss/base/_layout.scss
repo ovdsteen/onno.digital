@@ -7,7 +7,7 @@
                 padding-top: $header-height;
                 height: 100vh;
                 @include display(flex);
-                margin-top: 50px;
+                margin-top: 20px;
                 @include bp(m) {
                     margin-top: 0;
                     @include align-items(center);
@@ -19,7 +19,7 @@
 
 
 .page {
-    position: fixed;
+
     width: 100%;
     height: 100%;
     top: 0;
@@ -32,9 +32,9 @@
 
     }
     &.homepage{
+        position: fixed;
         .more {
             display: inline-block;
-            margin-top: 50px;
             @include bp(m) {
                 margin-top: 0;
             }

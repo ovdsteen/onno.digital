@@ -17,6 +17,7 @@ class About extends React.Component {
       className: 'animating--no',
       currentSlide: 3,
       totalSlide: AboutData.items.length,
+      isScrolling: false,
       breakpoints: {
         s: 768,
         m: 1024,
@@ -174,31 +175,50 @@ class About extends React.Component {
     )
   }
 
+
+  handlePanStart(event){
+
+    if (event.additionalEvent === 'panup' || event.additionalEvent === 'pandown') {
+        this.setState({
+          isScrolling: true
+        });
+    }
+
+  }
+
   handlePan(event){
 
     // remove css animation because we don't want it to be sluggish
-    this.setState({className:'animating--no'});
+    this.setState({
+      className:'animating--no'
+    });
 
-    // deltaX to viewport width
-    let deltaX = Math.round((event.deltaX/this.state.windowWidth)*100);
-    //let deltaX = event.deltaX;
+    if (!this.state.isScrolling) {
 
-    // sum latest position with deltaX
-    let translateX = this.state.positionX + deltaX;
+      // deltaX to viewport width
+      let deltaX = Math.round((event.deltaX/this.state.windowWidth)*100);
+      //let deltaX = event.deltaX;
 
-    // transform position
-    this.setState({style:{
-      transform: 'translate3d('+translateX+'%,0,0)'
-    }});
+      // sum latest position with deltaX
+      let translateX = this.state.positionX + deltaX;
+
+      // transform position
+      this.setState({style:{
+        transform: 'translate3d('+translateX+'%,0,0)'
+      }});
+
+    }
 
   }
 
 
-  releasePan(event,e){
+  releasePan(event){
 
-
-    // set css animation
-    this.setState({className:'animating--yes'});
+    // set css animation and reset scroll
+    this.setState({
+      className:'animating--yes',
+      isScrolling: false
+    });
 
     // deltaX to viewport width
     let deltaX = Math.round((event.deltaX/this.state.windowWidth)*100);
@@ -264,17 +284,35 @@ class About extends React.Component {
       return this.aboutItem(item,key);
     });
 
+    // Custom options
+    const options = {
+        touchAction:'compute',
+        recognizers: {
+            tap: {
+                time: 600,
+                threshold: 100
+            }
+        }
+    };
+
+     let direction = 'DIRECTION_ALL';
 
     return (
       <section className="page about">
-        <Hammer direction={Hammer.DIRECTION_HORIZONTAL} onTap={this.handleItemClick.bind(this)} onPan={this.handlePan.bind(this)} onPanEnd={this.releasePan.bind(this)}>
+        <Hammer
+          direction={direction}
+          onTap={this.handleItemClick.bind(this)}
+          onPanStart={this.handlePanStart.bind(this)}
+          onPan={this.handlePan.bind(this)}
+          onPanEnd={this.releasePan.bind(this)}
+        >
           <section className="slider">
             <div className={`slider__slides ${this.state.className}`} style={this.state.style}>
               {AboutItems}
             </div>
-            {this.aboutPagination(AboutData.items)}
           </section>
         </Hammer>
+        {this.aboutPagination(AboutData.items)}
       </section>
     );
   }

@@ -26,7 +26,11 @@
             "company":"@Peter Langhout Reizen",
             "timeframe":"01/2004 - 12/2007"
           }
-      ]
+      ],
+      "link": {
+        "url": "img/cv.pdf",
+        "label": "CV"
+      }
     },
     {
       "title": "Front-end",
@@ -60,7 +64,8 @@
       "subtitle": "Webdeveloper",
       "description": "Mijn interesses liggen bij open source oplossingen gecombineerd met maatwerk",
       "list": [
-        "PHP/Laravel/Worpress/Magento",
+        "PHP/Laravel",
+        "Worpress/Magento",
         "Node/Socket.io",
         "REST API's",
         "MYSQL, MongoDB"
@@ -69,9 +74,10 @@
     {
       "title": "UI/UX design",
       "subtitle": "Webdesign en user expierence",
-      "description": "Werken voor een creatief bureau heeft mij veel geleerd op het gebied van user experience en het analyseren van merken.",
+      "description": "Werken met creatieve bureaus heeft mij veel geleerd op het gebied van user experience en het analyseren van merken.",
       "list": [
-        "Photoshop/Illustrator/inDesign/Sketch",
+        "Photoshop/Sketch",
+        "Illustrator/inDesign",
         "Axure/Omnigraffle",
         "After Effects/Premiere"
       ]
