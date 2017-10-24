@@ -45,9 +45,6 @@ class Iot extends React.Component {
         <div className="row">
           <article className="column column--12">
               <div className="column__inner">
-                <header className="large-header">
-                  <h1 className="large-header__title h1">Iot</h1>
-                </header>
                 <div className="description">
                   <Slider onAfterChange={this.onSliderChange} />
                 </div>
