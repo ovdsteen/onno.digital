@@ -1,55 +1,74 @@
-var path = require('path');
-var webpack = require('webpack');
+const path = require('path');
+const webpack = require('webpack');
 
-var includePaths = require('node-neat').includePaths;
-includePaths.push([require('node-normalize-scss').includePaths])
+const bourbon = require("bourbon").includePaths;
+const neat = require("bourbon-neat").includePaths;
 
 module.exports = {
+  mode: 'development',
   entry: [
     'webpack/hot/dev-server',
     'webpack-hot-middleware/client',
     './src'
   ],
   output: {
-    path: '/',
+    path: path.resolve(__dirname, ''),
     filename: 'bundle.js',
     publicPath: '/'
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /.jsx?$/,
-        loaders: ['babel-loader', 'eslint-loader'],
-        exclude: /node_modules/
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'babel-loader'
+          },
+          {
+            loader: 'eslint-loader'
+          }
+        ]
       },
       {
         test: /\.scss$/,
-        loader: 'style!css!sass'
+        use: [
+          {
+            loader: "style-loader"
+          }, 
+          {
+            loader: "css-loader"
+          },
+          {
+            loader: 'postcss-loader'
+          },
+          {
+            loader: "sass-loader",
+            options: {
+              includePaths: bourbon.concat(neat)
+            }
+          }
+        ]
       },
       {
-        test: /\.json$/,
-        loader: 'json'
-      },
-      {
-          test: /\.(jpe?g|png|gif|svg)$/i,
-          loaders: [
-              'file?hash=sha512&digest=hex&name=[hash].[ext]',
-              'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
-          ]
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        use: [
+          {
+            loader: 'file?hash=sha512&digest=hex&name=[hash].[ext]'
+          },
+          {
+            loader: 'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
+          }
+        ]
       }
     ]
   },
 
-  sassLoader: {
-    includePaths: includePaths
-  },
-
-  eslint: {
-    emitWarning: true
+  optimization: {
+    noEmitOnErrors: true
   },
 
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.HotModuleReplacementPlugin()
   ]
 };
