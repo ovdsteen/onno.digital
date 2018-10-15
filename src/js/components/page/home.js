@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router'
+import { Link } from 'react-router-dom'
 import CreateMarkup from '../../helpers/createmarkup'
 import HomeData from '~/static/data/home.json'
 

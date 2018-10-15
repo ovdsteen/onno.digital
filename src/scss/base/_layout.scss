@@ -6,11 +6,11 @@
             .row{
                 padding-top: $header-height;
                 height: 100vh;
-                @include display(flex);
+                display: flex;
                 margin-top: 20px;
                 @include bp(m) {
                     margin-top: 0;
-                    @include align-items(center);
+                    align-items: center;
                 }
             }
         }
@@ -46,17 +46,17 @@
 .direction {
     z-index: 100;
     position: absolute;
-    @include transition(transform 0.6s);
-    @include transform(translateY(100vh));
+    transition: transform 0.6s;
+    transform: translateY(100vh);
     &--up{
-        @include transform(translateY(0));
+        transform: translateY(0);
     }
     .column{
         width: 320px;
     }
     .row{
-        @include transition(transform 0.6s);
-        @include transform(translateX(0));
+        transition: transform 0.6s;
+        transform: translateX(0);
     }
 }
 

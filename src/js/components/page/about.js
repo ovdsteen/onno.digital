@@ -284,18 +284,7 @@ class About extends React.Component {
       return this.aboutItem(item,key);
     });
 
-    // Custom options
-    const options = {
-        touchAction:'compute',
-        recognizers: {
-            tap: {
-                time: 600,
-                threshold: 100
-            }
-        }
-    };
-
-     let direction = 'DIRECTION_ALL';
+    let direction = 'DIRECTION_ALL';
 
     return (
       <section className="page about">

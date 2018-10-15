@@ -16,9 +16,10 @@ fieldset {
 
 label {}
 
-#{$all-text-inputs},
+#{$all-buttons},
 textarea {
-	@include placeholder() {
+
+	&::placeholder {
 		color: $color-grey;
 		font-style: italic;
 	}
@@ -51,8 +52,3 @@ input {
 textarea {
 	resize: vertical;
 }
-
-#{$all-button-inputs} {}
-
-#{$all-button-inputs-hover},
-#{$all-button-inputs-focus} {}

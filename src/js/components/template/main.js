@@ -1,6 +1,5 @@
 import React from 'react';
-import { RouteTransition } from 'react-router-transition';
-
+import Routes from '../../routes'
 import Header from '../layout/header';
 
 class MainTemplate extends React.Component {
@@ -12,13 +11,7 @@ class MainTemplate extends React.Component {
         <Header/>
         <div className="layout--full">
           <main className="main">
-            <RouteTransition
-              pathname={location.pathname}
-              atEnter={{ opacity: 0 }}
-              atLeave={{ opacity: 0 }}
-              atActive={{ opacity: 1 }} >
-            { this.props.children }
-            </RouteTransition>
+            {Routes}
           </main>
         </div>
       </div>

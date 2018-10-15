@@ -1,20 +1,21 @@
 import React from 'react';
-import { Route, IndexRedirect } from 'react-router';
-
-import MainTemplate from './components/template/main'
+import { Route } from 'react-router';
+import { AnimatedSwitch } from 'react-router-transition'
 
 import Home from './components/page/home'
 import About from './components/page/about'
 import NoMatch from './components/page/404';
 
 const Routes =  (
-  <Route component={MainTemplate}>
-    <IndexRedirect to="/" />
-    <Route path="/" component={Home} />
+  <AnimatedSwitch
+      atEnter={{ opacity: 0 }}
+      atLeave={{ opacity: 0 }}
+      atActive={{ opacity: 1 }}
+  >
+    <Route exact path="/" component={Home} />
     <Route path="/about" component={About} />
     <Route path="*" component={NoMatch}/>
-  </Route>
-
+  </AnimatedSwitch>
 );
 
 export default Routes;

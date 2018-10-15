@@ -6,8 +6,8 @@
     height: $header-height;
     z-index: 300;
     font-size: 100%;
-    @include display(flex);
-    @include align-items(center);
+    display: flex;
+    align-items: center;
     .color & {
         background: rgba(#fff,0.8);
     }
