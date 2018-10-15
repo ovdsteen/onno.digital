@@ -4,12 +4,16 @@
     {
       "title": "Experience",
       "subtitle": "Creative Webdeveloper",
-      "description": "Meer dan 10 jaar ervaring in verschillende disciplines",
       "list": [
+          {
+          "title":"Application developer",
+          "company":"@Comandi Dashboards",
+          "timeframe":"11/2016 - Heden"
+          },  
           {
             "title":"Head of technical development",
             "company":"@Strangelove",
-            "timeframe":"01/2012 - Heden"
+            "timeframe":"01/2012 - 11/2016"
           },
           {
             "title":"Freelance webdeveloper",
@@ -28,7 +32,7 @@
           }
       ],
       "link": {
-        "url": "img/cv.pdf",
+        "url": "img/resume.pdf",
         "label": "CV"
       }
     },
@@ -44,14 +48,14 @@
           "Gulp/Grunt/Webpack"
       ]
     },
-    {
+    { 
       "title": "Me",
       "image": "img/me.jpg",
       "subtitle": "Creative Webdeveloper",
-      "description": "Freelance webdeveloper. Voornamelijk op maat gemaakte webapplicaties, maar ook de bekende opensource systemen zoals wordpress en magento. Ik ben geïnteresseerd in de laatste technologieën en heb gewerkt met diverse API’s",
+      "description": "Voornamelijk op maat gemaakte webapplicaties, met Angular of React maar ook de bekende opensource systemen zoals Wordpress en Magento. Ik ben geïnteresseerd in de laatste technologieën en heb gewerkt met diverse API’s",
       "list": [
-        "32 jaar",
-        "Programeren/Muziek/Koffie",
+        "34 jaar",
+        "Programmeren/Muziek/Koffie",
         "Zuid-Holland/Nederland"
       ],
       "link": {
@@ -68,7 +72,8 @@
         "Worpress/Magento",
         "Node/Socket.io",
         "REST API's",
-        "MYSQL, MongoDB"
+        "MYSQL, MongoDB",
+        "Learning Go"
       ]
     },
     {
@@ -88,8 +93,10 @@
       "description": "",
       "list": [
         "Nginx/Apache",
-        "GIT/SSH/SSL",
-        "Capistrano"
+        "GIT/SSH",
+        "Docker",
+        "Capistrano",
+        "SSL"
       ]
     }
   ]
